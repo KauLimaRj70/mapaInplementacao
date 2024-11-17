@@ -1,0 +1,7 @@
+{
+  "name": "mapaInplementacao",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
