@@ -1,7 +1,9 @@
 import { Feature, Geometry, GeoJSON, GeoJsonProperties } from './../../../node_modules/@types/geojson/index.d';
 import { Component, AfterViewInit  } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-
+import {  OnInit } from '@angular/core';
+import {Router} from '@angular/router'
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 
 @Component({
@@ -11,11 +13,37 @@ import * as mapboxgl from 'mapbox-gl';
 })
 
 
-export class TabsPage implements AfterViewInit  {
+export class TabsPage implements AfterViewInit, OnInit  {
   map!: mapboxgl.Map;
+  public eventos:string[] =[];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  goTohome(){
+    this.router.navigate(['home'])
+  }
+
+  //eventos
+  ngOnInit() {
+    this.generateItems();
+  }
+
+  private generateItems() {
+    const count = this.eventos.length + 1;
+    for (let i = 0; i < 50; i++) {
+      this.eventos.push(`Evento ${count + i}`);
+    }
+  }
+
+  onIonInfinite(ev: InfiniteScrollCustomEvent) {
+    this.generateItems();
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
+  }
+
+
+//MapaCampus
   ngAfterViewInit() {
     (mapboxgl as any).accessToken = 'pk.eyJ1Ijoia2F1YW55cmoxMyIsImEiOiJjbTNsdWR2c24wOWtlMnZwbHA5NWJqZmFmIn0.26TEMqrq5oOaUwB_99cVTg';
 
@@ -81,6 +109,7 @@ export class TabsPage implements AfterViewInit  {
       });
     });
   }
+
 
 
 

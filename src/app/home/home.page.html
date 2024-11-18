@@ -1,29 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="danger">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>login</ion-title>
+    <ion-title>Unisagrado</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="login-container">
-    <ion-card>
+  <div  class="login-container">
+    <ion-card class="border">
       <ion-card-header>
-        <ion-card-title>Bem-vindo!</ion-card-title>
+        <ion-card-title>Bem-vindo ao Seu USCMapa</ion-card-title>
         <ion-card-subtitle>Entre para continuar</ion-card-subtitle>
       </ion-card-header>
 
         <form>
           <ion-item>
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" ></ion-input>
+            <ion-input class="input" type="email" ></ion-input>
           </ion-item>
-          <ion-text color="danger" >
+          <ion-text class="tex" color="danger" >
             O campo de e-mail é obrigatório.
           </ion-text>
-          <ion-text color="danger" >
+          <ion-text class="tex" color="danger" >
             Insira um e-mail válido.
           </ion-text>
 
@@ -31,16 +28,12 @@
             <ion-label position="floating">Senha</ion-label>
             <ion-input type="password" ></ion-input>
           </ion-item>
-          <ion-text color="danger" >
+          <ion-text class="tex" color="danger" >
             O campo de senha é obrigatório.
           </ion-text>
 
-          <ion-button (click)="goToTabs()" expand="block" type="submit" >Login</ion-button>
+          <ion-button color="danger" (click)="goToTabs()" expand="block" type="submit" >Login</ion-button>
         </form>
-
-
-
-
 
 
     </ion-card>

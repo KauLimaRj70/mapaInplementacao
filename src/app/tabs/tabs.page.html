@@ -14,27 +14,47 @@
     </ion-tab>
     <ion-tab tab="radio">
       <div id="radio-page">
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Radio</ion-title>
-          </ion-toolbar>
-        </ion-header>
+
         <ion-content  fullscreen="true">
           <div class="example-content">
-            <img alt="Unisagrado" src="" />
+            <ion-list>
+              <ion-item *ngFor="let item of eventos; let index">
+                <ion-avatar slot="start">
+                  <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+                </ion-avatar>
+                <ion-label>{{ item }}</ion-label>
+              </ion-item>
+            </ion-list>
+            <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+              <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+
           </div>
         </ion-content>
       </div>
     </ion-tab>
     <ion-tab tab="library">
-      <div id="library-page">
+      <ion-menu contentId="main-content">
         <ion-header>
-          <ion-toolbar>
-            <ion-title>Library</ion-title>
+          <ion-toolbar color="danger">
+            <ion-title >MINHA CONTA</ion-title>
           </ion-toolbar>
         </ion-header>
-        <ion-content>
-          <div class="example-content">Library content</div>
+        <ion-content class="ion-padding">
+          <ion-button (click)="goTohome()" color="danger"> Sair</ion-button>
+        </ion-content>
+      </ion-menu>
+      <div class="ion-page" id="main-content">
+        <ion-header>
+          <ion-toolbar color="danger">
+            <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>MINHA CONTA</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+
         </ion-content>
       </div>
     </ion-tab>
@@ -51,7 +71,7 @@
       </div>
     </ion-tab>
 
-    <ion-tab-bar slot="bottom">
+    <ion-tab-bar color="danger"  slot="bottom">
       <ion-tab-button tab="home">
         <ion-icon name="footsteps-outline"></ion-icon>
         Mapa Campus
@@ -61,10 +81,11 @@
         Eventos
       </ion-tab-button>
       <ion-tab-button tab="library">
-        <ion-icon name="library"></ion-icon>
-        Library
+        <ion-icon name="person-outline"></ion-icon>
+        My
       </ion-tab-button>
 
     </ion-tab-bar>
   </ion-tabs>
 </ion-content>
+
